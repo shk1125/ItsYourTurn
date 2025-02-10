@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public struct MapData //∏  µ•¿Ã≈Õ ±∏¡∂√º
+{
+    public string mapName; //∏  ¿Ã∏ß
+    public string tilemapLocation; //≈∏¿œ∏  ¿ßƒ°
+    public string battleSceneBackgroundSpriteLocation;
+    public Dictionary<int,tileData> tileDataDictionary;
+    public string tileIDArrayLocation;
+}
+
+public struct tileData
+{
+    public TileName tileName;
+    public double encounterProbability;
+    public int[] characterIDArray;
+}   
+
+public enum TileName
+{
+    Plain,
+    Forest,
+    Mountain,
+	Store
+}
+

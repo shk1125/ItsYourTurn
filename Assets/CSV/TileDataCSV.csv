@@ -1,0 +1,4 @@
+TileID,100,101,102
+TileName,Plain,Forest,Mountain
+EncounterProbability,0.2,0.4,0.3
+CharacterIDArray,"200,201","201,202","202,203"
