@@ -16,9 +16,9 @@ public struct SkillData
 
 public enum SkillType
 {
-    attack,
-    defence,
-    heal,
-    buff,
-    debuff
+    Attack,
+    Defence,
+    Heal,
+    Buff,
+    Debuff
 }

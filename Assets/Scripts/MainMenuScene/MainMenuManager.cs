@@ -84,10 +84,50 @@ public class MainMenuManager : MonoBehaviour
 		GenerateHowToPlayPanel();
 	}
 
+    private void Start()
+    {
+		Dictionary<int, SkillData> skillDataDictionary = new Dictionary<int, SkillData>();
 
-	#region NewGameMethods
 
-	public void OnClickNewGame()
+		SkillData skillData = new SkillData();
+
+		skillData.skillName = "강한 공격";
+		skillData.skillPower = 0;
+		skillData.skillCoefficient = 1.5;
+		skillData.skillTurn = 2;
+		skillData.skillType = SkillType.Attack;
+		skillData.skillSpriteLocation = "Data/SkillSprites/SkillSprite_100";
+		skillData.skillDurationTurn = 0;
+
+		skillDataDictionary.Add(100, skillData);
+
+        skillData.skillName = "방어";
+        skillData.skillPower = 10;
+        skillData.skillCoefficient = 0;
+        skillData.skillTurn = 2;
+        skillData.skillType = SkillType.Defence;
+        skillData.skillSpriteLocation = "Data/SkillSprites/SkillSprite_101";
+        skillData.skillDurationTurn = 2;
+
+        skillDataDictionary.Add(101, skillData);
+
+        skillData.skillName = "회복";
+        skillData.skillPower = 0;
+        skillData.skillCoefficient = 1;
+        skillData.skillTurn = 2;
+        skillData.skillType = SkillType.Heal;
+        skillData.skillSpriteLocation = "Data/SkillSprites/SkillSprite_102";
+        skillData.skillDurationTurn = 0;
+
+        skillDataDictionary.Add(102, skillData);
+
+        File.WriteAllText(saveDataLocation, JsonConvert.SerializeObject(skillDataDictionary));
+    }
+
+
+    #region New Game Methods
+
+    public void OnClickNewGame()
 	{
 		SaveDataHolder.saveData = new SaveData();
 		mainMenuPanel.SetActive(false);
@@ -98,7 +138,7 @@ public class MainMenuManager : MonoBehaviour
 
 	#endregion
 
-	#region LoadGameMethods
+	#region Load Game Methods
 
 	public void OnClickLoadGame()
 	{
@@ -212,7 +252,7 @@ public class MainMenuManager : MonoBehaviour
 
 	#endregion
 
-	#region HowToPlayMethods
+	#region How To Play Methods
 
 	public void OnClickHowToPlay()
 	{
@@ -266,7 +306,7 @@ public class MainMenuManager : MonoBehaviour
 
 	#endregion
 
-	#region QuitGameMethods
+	#region Quit Game Methods
 
 	public void OnClickQuitGame()
 	{
@@ -281,7 +321,7 @@ public class MainMenuManager : MonoBehaviour
 
 	#endregion
 
-	#region LoadingMethods
+	#region Loading Methods
 
 	IEnumerator LoadScene(string scene) //Scene 변경 메소드
 	{

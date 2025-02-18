@@ -151,9 +151,9 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 		{
 			for (int i = 1; i < characterManagerList.Count; i++) //캐릭터 매니저 리스트 반복문
 			{
-				if (characterManager.GetTurnSpeed() < characterManagerList[i].GetTurnSpeed()) //현재 캐릭터 매니저의 턴 속도보다 캐릭터 매니저 리스트 요소의 턴 속도보다 느릴 경우
+				if (characterManager.GetTurnSpeed() <= characterManagerList[i].GetTurnSpeed()) //현재 캐릭터 매니저의 턴 속도보다 캐릭터 매니저 리스트 요소의 턴 속도보다 느릴 경우 혹은 턴 속도가 같을 경우
 				{
-					characterManager = characterManagerList[i]; //캐릭터 매니저 리스트 요소로 캐릭터 매니저 저장 : 즉 턴 속도가 빠른 순서대로 큐가 만들어질 것임
+					characterManager = characterManagerList[i]; //캐릭터 매니저 리스트 요소로 캐릭터 매니저 저장 : 즉 턴 속도가 빠르거나 같은 순서대로 큐가 만들어질 것임
 				}
 			}
 			turnQueue.Enqueue(characterManager); //턴 관리 큐에 캐릭터 매니저 추가
@@ -174,10 +174,10 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 		characterManager = characterManagerList[0]; //캐릭터 매니저 리스트 0번으로 캐릭터 매니저 저장
 		for (int i = 1; i < characterManagerList.Count; i++) //캐릭터 매니저 리스트 반복문
 		{
-			if (characterManager.GetTurnSpeed() < characterManagerList[i].GetTurnSpeed()) //현재 캐릭터 매니저의 턴 속도보다 캐릭터 매니저 리스트 요소의 턴 속도보다 느릴 경우
-			{
-				characterManager = characterManagerList[i]; //캐릭터 매니저 리스트 요소로 캐릭터 매니저 저장 : 즉 턴 속도가 빠른 순서대로 다음 큐가 만들어질 것임
-			}
+			if (characterManager.GetTurnSpeed() <= characterManagerList[i].GetTurnSpeed()) //현재 캐릭터 매니저의 턴 속도보다 캐릭터 매니저 리스트 요소의 턴 속도보다 느릴 경우 혹은 턴 속도가 같을 경우
+            {
+				characterManager = characterManagerList[i]; //캐릭터 매니저 리스트 요소로 캐릭터 매니저 저장 : 즉 턴 속도가 빠르거나 같은 순서대로 큐가 만들어질 것임
+            }
 		}
 		turnQueue.Enqueue(characterManager); //턴 관리 큐에 캐릭터 매니저 추가
 		characterManager.AddTurnSpeed(-characterManager.GetTurnSpeed()); //캐릭터 매니저의 턴 속도 감소 :
@@ -247,7 +247,6 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 		characterStatText.text = $"체력 : {currentPlayerCharacterManager.GetCurrentHealth()} / {currentPlayerCharacterManager.GetCharacterData().defaultMaxHealth}\n" + //현재 캐릭터 체력 텍스트 저장
 			$"공격력 : {currentPlayerCharacterManager.GetCharacterData().defaultAttackPower} + {itemDataDictionary[currentPlayerCharacterManager.GetCharacterSaveData().weaponID].attackPower}\n" + //현재 캐릭터 공격력 텍스트 저장
 			$"방어력 : {currentPlayerCharacterManager.GetCharacterData().defaultDefencePower} + {itemDataDictionary[currentPlayerCharacterManager.GetCharacterSaveData().armorID].defencePower}"; //현재 캐릭터 방어력 텍스트 저장
-		defaultAttackButtonImage.sprite = skillSpriteDictionary[currentPlayerCharacterManager.GetCharacterData().defaultAttackID]; //기본 공격 스프라이트 저장
 		defaultActiveSkill01ButtonImage.sprite = skillSpriteDictionary[currentPlayerCharacterManager.GetCharacterData().defaultActiveSkill01ID]; //1번 스킬 스프라이트 저장
 		defaultActiveSkill02ButtonImage.sprite = skillSpriteDictionary[currentPlayerCharacterManager.GetCharacterData().defaultActiveSkill02ID]; //2번 스킬 스프라이트 저장
 
@@ -357,7 +356,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 						skillData = skillDataDictionary[currentEnemyCharacterManager.GetCharacterData().defaultActiveSkill01ID];
 						switch (skillData.skillType)
 						{
-							case SkillType.buff:
+							case SkillType.Buff:
 								{
 									//버프 스킬
 									break;
@@ -366,7 +365,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 								{
 									switch (skillData.skillType)
 									{
-										case SkillType.debuff:
+										case SkillType.Debuff:
 											{
 												//디버프 스킬
 												break;
@@ -375,7 +374,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 											{
 												switch (skillData.skillType)
 												{
-													case SkillType.attack:
+													case SkillType.Attack:
 														{
 															//공격 스킬
 															break;
@@ -384,7 +383,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 														{
 															switch (skillData.skillType)
 															{
-																case SkillType.heal:
+																case SkillType.Heal:
 																	{
 																		if (currentEnemyCharacterManager.GetCharacterData().defaultMaxHealth - currentEnemyCharacterManager.GetCurrentHealth() > skillData.skillPower * skillData.skillCoefficient)
 																		{
@@ -424,7 +423,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 									skillData = skillDataDictionary[currentEnemyCharacterManager.GetCharacterData().defaultActiveSkill02ID];
 									switch (skillData.skillType)
 									{
-										case SkillType.buff:
+										case SkillType.Buff:
 											{
 												//버프 스킬
 												break;
@@ -433,7 +432,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 											{
 												switch (skillData.skillType)
 												{
-													case SkillType.debuff:
+													case SkillType.Debuff:
 														{
 															//디버프 스킬
 															break;
@@ -442,7 +441,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 														{
 															switch (skillData.skillType)
 															{
-																case SkillType.attack:
+																case SkillType.Attack:
 																	{
 																		//공격 스킬
 																		break;
@@ -451,7 +450,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 																	{
 																		switch (skillData.skillType)
 																		{
-																			case SkillType.heal:
+																			case SkillType.Heal:
 																				{
 																					if (currentEnemyCharacterManager.GetCharacterData().defaultMaxHealth - currentEnemyCharacterManager.GetCurrentHealth() > skillData.skillPower * skillData.skillCoefficient)
 																					{
@@ -502,7 +501,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 
 						switch(skillData.skillType)
 						{
-							case SkillType.heal:
+							case SkillType.Heal:
 								{
 									//회복 스킬
 									break;
@@ -511,7 +510,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 								{
 									switch(skillData.skillType)
 									{
-										case SkillType.defence:
+										case SkillType.Defence:
 											{
 												//방어 스킬
 												break;
@@ -520,7 +519,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 											{
 												switch(skillData.skillType)
 												{
-													case SkillType.debuff:
+													case SkillType.Debuff:
 														{
 															//디버프 스킬
 															break;
@@ -529,7 +528,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 														{
 															switch(skillData.skillType)
 															{
-																case SkillType.buff:
+																case SkillType.Buff:
 																	{
 																		//버프 스킬
 																		break;
@@ -538,7 +537,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 																	{
 																		switch(skillData.skillType)
 																		{
-																			case SkillType.attack:
+																			case SkillType.Attack:
 																				{
 																					//공격 스킬
 																					break;
@@ -574,7 +573,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 
 									switch (skillData.skillType)
 									{
-										case SkillType.heal:
+										case SkillType.Heal:
 											{
 												//회복 스킬
 												break;
@@ -583,7 +582,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 											{
 												switch (skillData.skillType)
 												{
-													case SkillType.defence:
+													case SkillType.Defence:
 														{
 															//방어 스킬
 															break;
@@ -592,7 +591,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 														{
 															switch (skillData.skillType)
 															{
-																case SkillType.debuff:
+																case SkillType.Debuff:
 																	{
 																		//디버프 스킬
 																		break;
@@ -601,7 +600,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 																	{
 																		switch (skillData.skillType)
 																		{
-																			case SkillType.buff:
+																			case SkillType.Buff:
 																				{
 																					//버프 스킬
 																					break;
@@ -610,7 +609,7 @@ public class BattleManager : MonoBehaviour //배틀매니저 클래스
 																				{
 																					switch (skillData.skillType)
 																					{
-																						case SkillType.attack:
+																						case SkillType.Attack:
 																							{
 																								//공격 스킬
 																								break;

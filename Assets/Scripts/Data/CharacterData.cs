@@ -12,9 +12,8 @@ public struct CharacterData //캐릭터 데이터 구조체
     public double defaultDodgeProbability; //기본 회피 가능성
     public int defaultTurnSpeed; //기본 턴 속도
     public double defaultCriticalProbability; //기본 치명타 가능성
-    public int defaultAttackID; //기본 공격 ID
     public int defaultActiveSkill01ID; //1번 스킬 ID
 	public int defaultActiveSkill02ID; //2번 스킬 ID
     public string characterSpriteLocation; //캐릭터 스프라이트 위치
-
+    public int money; //물리쳤을 때 주는 돈(적 캐릭터만 유효, 플레이어 캐릭터는 0)
 }

@@ -1,0 +1,7 @@
+id,characterName,isPlayerCharacter,defaultMaxHealth,defaultAttackPower,defaultDefencePower,defaultDodgeProbability,defaultTurnSpeed,defaultCriticalProbability,defaultActiveSkill01ID,defaultActiveSkill02ID,characterSpriteLocation,,money
+100,플레이어0,TRUE,100,20,5,0.1,60,0.1,101,102,Data/CharacterSprites/CharacterSprite_100,,0
+101,플레이어1,TRUE,50,40,0,0.5,50,0.5,101,102,Data/CharacterSprites/CharacterSprite_101,,0
+102,플레이어2,TRUE,60,10,5,0.2,40,0.1,102,103,Data/CharacterSprites/CharacterSprite_102,,0
+200,적0,FALSE,100,20,5,0.1,30,0.1,101,102,Data/CharacterSprites/CharacterSprite_200,,10
+201,적1,FALSE,50,40,0,0.5,20,0.5,101,102,Data/CharacterSprites/CharacterSprite_201,,10
+202,적2,FALSE,60,10,5,0.2,10,0.1,102,103,Data/CharacterSprites/CharacterSprite_202,,10

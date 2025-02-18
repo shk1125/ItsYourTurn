@@ -1,0 +1,2 @@
+id,mapName,tilemapLocation,battleSceneBackgroundSpriteLocation,tileIDArrayLocation
+100,첫 번째 지역,GameScene/Tilemaps/Tilemap_First,BattleScene/BattleSceneBackgrounds/BattleSceneBackground_Forest,GameScene/TileIDArrays/TileIDArray_Tilemap_First

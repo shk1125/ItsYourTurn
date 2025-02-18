@@ -25,7 +25,7 @@ public class SaveData //저장 데이터 클래스
         mapID = 100;
        
         playerPosition = new Vector2(-0.5f, 0.5f);
-		characterSaveDataArray = new CharacterSaveData[1];
+		characterSaveDataArray = new CharacterSaveData[3];
 
         
 
@@ -37,22 +37,22 @@ public class SaveData //저장 데이터 클래스
         characterSaveDataArray[0].armorID = 0;
         characterSaveDataArray[0].weaponID = 0;
 
-        /*
+        
 		characterSaveDataArray[1].characterID = 101;
-		characterSaveDataArray[1].currentHealth = CharacterDataDictionary[characterSaveDataArray[1].characterID].defaultMaxHealth;
-		characterSaveDataArray[1].ArmorID = 0;
+		characterSaveDataArray[1].currentHealth = characterDataDictionary[characterSaveDataArray[1].characterID].defaultMaxHealth;
+		characterSaveDataArray[1].armorID = 0;
 		characterSaveDataArray[1].weaponID = 0;
 
 		characterSaveDataArray[2].characterID = 102;
-		characterSaveDataArray[2].currentHealth = CharacterDataDictionary[characterSaveDataArray[2].characterID].defaultMaxHealth;
-		characterSaveDataArray[2].ArmorID = 0;
+		characterSaveDataArray[2].currentHealth = characterDataDictionary[characterSaveDataArray[2].characterID].defaultMaxHealth;
+		characterSaveDataArray[2].armorID = 0;
 		characterSaveDataArray[2].weaponID = 0;
-        */
+        
 
 
         itemIDList = new List<int>();
 
-        money = 0;
+        money = 5000;
 	}
 }
 

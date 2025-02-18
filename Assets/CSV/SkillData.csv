@@ -1,0 +1,4 @@
+id,skillName,skillPower,skillCoefficient,skillTurn,skillType,skillSpriteLocation,skillDurationTurn
+100,강한 공격,0,1.5,2,Attack,Data/SkillSprites/SkillSprite_100,0
+101,방어,10,0,2,Defence,Data/SkillSprites/SkillSprite_101,2
+102,회복,0,1,2,Heal,Data/SkillSprites/SkillSprite_102,0
