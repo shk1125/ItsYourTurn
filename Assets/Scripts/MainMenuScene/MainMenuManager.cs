@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Newtonsoft.Json;
+using UnityEditor;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -75,7 +76,7 @@ public class MainMenuManager : MonoBehaviour
 			dataFolder.Create(); //데이터 폴더 생성
 		}
 
-		saveDataLocation = Application.persistentDataPath + "/Data/saveData.json";
+		saveDataLocation = Application.persistentDataPath + "/Data/SaveData.json";
 
 #if !UNITY_ANDROID
 		Screen.SetResolution(1920, 1080, true); //PC에서 해상도 Full HD로 고정
@@ -84,46 +85,7 @@ public class MainMenuManager : MonoBehaviour
 		GenerateHowToPlayPanel();
 	}
 
-    private void Start()
-    {
-		Dictionary<int, SkillData> skillDataDictionary = new Dictionary<int, SkillData>();
-
-
-		SkillData skillData = new SkillData();
-
-		skillData.skillName = "강한 공격";
-		skillData.skillPower = 0;
-		skillData.skillCoefficient = 1.5;
-		skillData.skillTurn = 2;
-		skillData.skillType = SkillType.Attack;
-		skillData.skillSpriteLocation = "Data/SkillSprites/SkillSprite_100";
-		skillData.skillDurationTurn = 0;
-
-		skillDataDictionary.Add(100, skillData);
-
-        skillData.skillName = "방어";
-        skillData.skillPower = 10;
-        skillData.skillCoefficient = 0;
-        skillData.skillTurn = 2;
-        skillData.skillType = SkillType.Defence;
-        skillData.skillSpriteLocation = "Data/SkillSprites/SkillSprite_101";
-        skillData.skillDurationTurn = 2;
-
-        skillDataDictionary.Add(101, skillData);
-
-        skillData.skillName = "회복";
-        skillData.skillPower = 0;
-        skillData.skillCoefficient = 1;
-        skillData.skillTurn = 2;
-        skillData.skillType = SkillType.Heal;
-        skillData.skillSpriteLocation = "Data/SkillSprites/SkillSprite_102";
-        skillData.skillDurationTurn = 0;
-
-        skillDataDictionary.Add(102, skillData);
-
-        File.WriteAllText(saveDataLocation, JsonConvert.SerializeObject(skillDataDictionary));
-    }
-
+    
 
     #region New Game Methods
 

@@ -1,0 +1,4 @@
+id,itemName,itemDescription,itemPrice,attackPower,defencePower,dodgeProbability,turnSpeed,criticalProbability,health,itemSpriteLocation,itemTag
+100,그냥 칼,그냥 칼입니다.,100,10,0,0,0,0,0,Data/ItemSprites/ItemSprite_101,Weapon
+101,그냥 갑옷,그냥 갑옷입니다.,100,0,10,0,0,0,0,Data/ItemSprites/ItemSprite_102,Armor
+102,빨간 물약,체력을 회복합니다.,100,0,0,0,0,0,10,Data/ItemSprites/ItemSprite_103,Consumable

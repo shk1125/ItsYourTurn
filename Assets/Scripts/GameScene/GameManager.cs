@@ -488,19 +488,19 @@ public class GameManager : MonoBehaviour
 
 		switch(itemDataDictionary[itemID].itemTag)
 		{
-			case itemTag.consumable:
+			case ItemTag.Consumable:
 				{
 					inventoryItemTagText.text = "¸Ô´Â°Å";
 					inventoryItemStatText.text = $"Ã¼·Â : {itemDataDictionary[itemID].health}";
 					break;
 				}
-			case itemTag.weapon:
+			case ItemTag.Weapon:
 				{
 					inventoryItemTagText.text = "¹«±â";
 					inventoryItemStatText.text = $"°ø°Ý·Â : {itemDataDictionary[itemID].attackPower}";
 					break;
 				}
-			case itemTag.armor:
+			case ItemTag.Armor:
 				{
 					inventoryItemTagText.text = "°©¿Ê";
 					inventoryItemStatText.text = $"¹æ¾î·Â : {itemDataDictionary[itemID].defencePower}";
@@ -513,21 +513,21 @@ public class GameManager : MonoBehaviour
 	{
 		switch (itemDataDictionary[itemID].itemTag)
 		{
-			case itemTag.weapon:
+			case ItemTag.Weapon:
 				{
 					SaveDataHolder.saveData.characterSaveDataArray[currentCharacterNum].weaponID = itemID;
 			        weaponImage.sprite = itemSpriteDictionary[itemID];
 					weaponAttackPower = itemDataDictionary[SaveDataHolder.saveData.characterSaveDataArray[currentCharacterNum].weaponID].attackPower;
 					break;
 				}
-			case itemTag.armor:
+			case ItemTag.Armor:
 				{
 					SaveDataHolder.saveData.characterSaveDataArray[currentCharacterNum].armorID = itemID;
 					armorImage.sprite = itemSpriteDictionary[itemID];
 					armorDefencePower = itemDataDictionary[SaveDataHolder.saveData.characterSaveDataArray[currentCharacterNum].armorID].defencePower;
 					break;
 				}
-			case itemTag.consumable:
+			case ItemTag.Consumable:
 				{
 					SaveDataHolder.saveData.characterSaveDataArray[currentCharacterNum].currentHealth += itemDataDictionary[itemID].health;
 					if(SaveDataHolder.saveData.characterSaveDataArray[currentCharacterNum].currentHealth > characterDataDictionary[SaveDataHolder.saveData.characterSaveDataArray[currentCharacterNum].characterID].defaultMaxHealth)
@@ -620,19 +620,19 @@ public class GameManager : MonoBehaviour
 		storeItemNameText.text = itemDataDictionary[itemID].itemName;
 		switch(itemDataDictionary[itemID].itemTag)
 		{
-			case itemTag.weapon:
+			case ItemTag.Weapon:
 				{
 					storeItemTagText.text = "¹«±â";
 					storeItemStatText.text = $"°ø°Ý·Â : {itemDataDictionary[itemID].attackPower}";
 					break;
 				}
-			case itemTag.armor:
+			case ItemTag.Armor:
 				{
 					storeItemTagText.text = "°©¿Ê";
 					storeItemStatText.text = $"¹æ¾î·Â : {itemDataDictionary[itemID].attackPower}";
 					break;
 				}
-			case itemTag.consumable:
+			case ItemTag.Consumable:
 				{
 					storeItemTagText.text = "¸Ô´Â°Å";
 					storeItemStatText.text = $"È¸º¹·® : {itemDataDictionary[itemID].attackPower}";
